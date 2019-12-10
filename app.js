@@ -1,17 +1,12 @@
 const request = require('request');
 const chalk = require('chalk');
-var args = require('minimist')(process.argv.slice(2));
 
 
-let overpassParams = 'area';
 
-Object.keys(args).slice(1).forEach(arg => {
-    overpassParams+=`[${arg}="${args[arg]}"]`
-})
+function getBoundingBox(queryString) {
 
-const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${overpassParams};rel(pivot);out geom;`
+    const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${queryString};rel(pivot);out geom;`
 
-function cliGetBoundingBox() {
     request(requestUrl, (err, res, body) => {
 
         let elements = JSON.parse(body).elements;
@@ -50,4 +45,4 @@ function cliGetBoundingBox() {
     })
 }
 
-cliGetBoundingBox();
+module.exports = getBoundingBox;

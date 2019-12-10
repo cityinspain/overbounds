@@ -16,6 +16,7 @@
   ],
   "author": "salamanca",
   "license": "ISC",
+  "bin": "cli.js",
   "bugs": {
     "url": "https://github.com/cityinspain/overpass-bounds/issues"
   },
