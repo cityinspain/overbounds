@@ -5,6 +5,10 @@ const chalk = require('chalk');
 
 function getBoundingBox(queryString) {
 
+    if (queryString.indexOf("[") === -1) {
+        throw new Error("Please specify at least one query parameter.")
+    }
+
     const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${queryString};rel(pivot);out geom;`
 
     request(requestUrl, (err, res, body) => {
@@ -39,6 +43,10 @@ function getBoundingBox(queryString) {
                     counter++;
                 })
             }
+
+        } else {
+    
+            console.log('Your query returned no results.')
 
         }
 
