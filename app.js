@@ -46,7 +46,7 @@ function getBoundingBox(queryString) {
 
         } else {
     
-            console.log('Your query returned no results.')
+            console.log(chalk.red('\nYour query returned no results.'))
 
         }
 
