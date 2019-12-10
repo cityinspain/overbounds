@@ -53,4 +53,4 @@ function getBoundingBox(queryString) {
     })
 }
 
-module.exports = getBoundingBox;
+exports.getBoundingBox = getBoundingBox;

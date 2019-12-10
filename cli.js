@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var args = require('minimist')(process.argv.slice(2));
-const getBoundingBox = require('./app');
+const app = require('./app');
 
 let overpassParams = 'area';
 
@@ -10,4 +10,4 @@ Object.keys(args).slice(1).forEach(arg => {
 })
 
 
-getBoundingBox(overpassParams)
+app.getBoundingBox(overpassParams)
