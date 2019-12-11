@@ -3,13 +3,19 @@ const chalk = require('chalk');
 
 
 
-function getBoundingBox(queryString) {
+function getBoundingBox(query) {
 
-    if (queryString.indexOf("[") === -1) {
+    let overpassParams = 'area';
+
+    Object.keys(query).forEach(arg => {
+        overpassParams+=`[${arg}="${query[arg]}"]`
+    })
+
+    if (Object.keys(query).length === 0) {
         throw new Error("Please specify at least one query parameter.")
     }
 
-    const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${queryString};rel(pivot);out geom;`
+    const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${overpassParams};rel(pivot);out geom;`
 
     request(requestUrl, (err, res, body) => {
 
