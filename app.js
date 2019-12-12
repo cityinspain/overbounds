@@ -2,8 +2,30 @@ const request = require('request');
 const chalk = require('chalk');
 
 
-
 function getBoundingBox(query) {
+
+
+    let overpassParams = 'area';
+
+    Object.keys(query).forEach(arg => {
+        overpassParams+=`[${arg}="${query[arg]}"]`
+    })
+
+    if (Object.keys(query).length === 0) {
+        throw new Error("Please specify at least one query parameter.")
+    }
+
+    const requestUrl = `http://overpass-api.de/api/interpreter?data=[out:json];${overpassParams};rel(pivot);out geom;`
+
+    return new Promise((resolve, reject) => {
+        request(requestUrl, (err, res, body) => {
+            resolve(JSON.parse(body));
+        });
+    });
+
+}
+
+function _getBoundingBoxCLI(query) {
 
     let overpassParams = 'area';
 
@@ -59,4 +81,5 @@ function getBoundingBox(query) {
     })
 }
 
+exports._getBoundingBoxCLI = _getBoundingBoxCLI;
 exports.getBoundingBox = getBoundingBox;
