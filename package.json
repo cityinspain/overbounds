@@ -1,5 +1,5 @@
 {
-  "name": "overpass-bounds",
+  "name": "overbounds",
   "version": "1.0.0",
   "description": "Get place bounds via the overpass API",
   "main": "app.js",
@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cityinspain/overpass-bounds.git"
+    "url": "git+https://github.com/cityinspain/overbounds.git"
   },
   "keywords": [
     "overpass",
     "place"
   ],
-  "author": "salamanca",
+  "author": "cityinspain",
   "license": "ISC",
   "bin": "cli.js",
   "bugs": {
-    "url": "https://github.com/cityinspain/overpass-bounds/issues"
+    "url": "https://github.com/cityinspain/overbounds/issues"
   },
-  "homepage": "https://github.com/cityinspain/overpass-bounds#readme",
+  "homepage": "https://github.com/cityinspain/overbounds#readme",
   "dependencies": {
     "chalk": "^3.0.0",
     "minimist": "^1.2.0",
